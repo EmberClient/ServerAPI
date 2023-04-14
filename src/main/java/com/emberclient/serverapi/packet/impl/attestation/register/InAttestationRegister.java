@@ -15,7 +15,7 @@ public class InAttestationRegister extends Packet {
 
     @Override
     public void read(ByteBufWrapper buf) {
-        this.status = AttestationRegisterResult.fromCode(buf.readVarInt());
+        this.status = buf.readEnum(AttestationRegisterResult.class);
 
         if (this.status.equals(AttestationRegisterResult.SUCCESS)) {
             String publicKey = buf.readString();

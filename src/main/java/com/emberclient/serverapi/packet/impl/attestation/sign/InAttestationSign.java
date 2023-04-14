@@ -14,11 +14,10 @@ public class InAttestationSign extends Packet {
 
     @Override
     public void read(ByteBufWrapper buf) {
-        this.status = AttestationSignResult.fromCode(buf.readVarInt());
+        this.status = buf.readEnum(AttestationSignResult.class);
 
         if (this.status.equals(AttestationSignResult.SUCCESS)) {
             String encodedData = buf.readString();
-
             this.signedData = Base64.getDecoder().decode(encodedData);
         }
     }
