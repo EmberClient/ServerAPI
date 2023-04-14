@@ -27,7 +27,7 @@ public class PacketManager {
 
     public void handle(Player player, ByteBufWrapper buf) {
         int id = buf.readVarInt();
-        Class<? extends Packet> packetClass = packets.get(id);
+        Class<? extends Packet> packetClass = this.packets.get(id);
 
         if (packetClass == null) {
             return;
