@@ -1,0 +1,3 @@
+name: ECServerAPI
+version: '${version}'
+main: com.emberclient.serverapi.ECServerAPI
