@@ -1,17 +1,22 @@
 package com.emberclient.serverapi.event;
 
-import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 
 public class EmberPlayerJoinEvent extends PlayerEvent {
-    @Getter private static HandlerList handlerList = new HandlerList();
+    //<editor-fold desc="<Handler List>" defaultstate="collapsed">
+    private static final HandlerList handlers = new HandlerList();
+
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
 
     @Override
     public HandlerList getHandlers() {
-        return handlerList;
+        return handlers;
     }
+    //</editor-fold>
 
     public EmberPlayerJoinEvent(Player player) {
         super(player);

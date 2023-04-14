@@ -7,16 +7,18 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 
 public class EmberAttestationSignEvent extends PlayerEvent {
-    @Getter
-    private static HandlerList handlerList = new HandlerList();
+    //<editor-fold desc="<Handler List>" defaultstate="collapsed">
+    private static final HandlerList handlers = new HandlerList();
+
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
 
     @Override
     public HandlerList getHandlers() {
-        return handlerList;
+        return handlers;
     }
-
-    @Getter
-    private Player player;
+    //</editor-fold>
 
     @Getter
     private AttestationSignResult status;
