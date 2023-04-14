@@ -88,6 +88,7 @@ public final class ByteBufWrapper extends ForwardingByteBuf {
      * @param entryParser the parser
      * @param <T>         the type of the object
      */
+    @Nullable
     public <T> T readOptional(@NotNull Function<ByteBuf, T> entryParser) {
         if (this.readBoolean()) {
             return entryParser.apply(this);
@@ -101,7 +102,7 @@ public final class ByteBufWrapper extends ForwardingByteBuf {
      *
      * @param consumer the consumer
      */
-    public void forEachInCollection(Consumer<ByteBuf> consumer) {
+    public void forEachInCollection(@NotNull Consumer<ByteBuf> consumer) {
         int count = this.readVarInt();
 
         for (int j = 0; j < count; ++j) {
@@ -173,6 +174,7 @@ public final class ByteBufWrapper extends ForwardingByteBuf {
      * @param valueParser the value deserializer
      * @return the new map
      */
+    @NotNull
     public <K, V, M extends Map<K, V>> M readMap(@NotNull IntFunction<M> mapFactory, @NotNull Function<ByteBuf, K> keyParser, @NotNull Function<ByteBuf, V> valueParser) {
         int size = this.readVarInt();
         M map = mapFactory.apply(size);
