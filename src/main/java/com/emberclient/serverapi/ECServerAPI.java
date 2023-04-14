@@ -4,8 +4,8 @@ import com.emberclient.serverapi.listener.ChannelListener;
 import com.emberclient.serverapi.listener.MessageListener;
 import com.emberclient.serverapi.packet.Packet;
 import com.emberclient.serverapi.packet.PacketManager;
+import io.netty.buffer.ByteBuf;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -45,7 +45,12 @@ public final class ECServerAPI extends JavaPlugin {
             return;
         }
 
-        player.sendPluginMessage(this, CHANNEL_NAME, this.getPacketManager().getData(packet).buf().array());
+        ByteBuf buf = this.getPacketManager().getData(packet);
+        try {
+            player.sendPluginMessage(this, CHANNEL_NAME, buf.array());
+        } finally {
+            buf.release();
+        }
     }
 
     public boolean isPlayerOnEmber(UUID uuid) {
