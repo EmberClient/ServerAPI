@@ -26,4 +26,4 @@ softdepend:
 The Server API has a few features that you can use. These features are listed below.
 
 1. [Attestation](https://github.com/EmberClient/ServerAPI/wiki/Attestation)
-    > Attestation is an exceptional authentication method to supplement your server's security measures. It stands out as a primary 2FA option due to its user-friendliness when compared to TOTP apps. TOTP can be effectively utilized as a secondary 2FA method.
+> Attestation is an exceptional authentication method to supplement your server's security measures. It stands out as a primary 2FA option due to its user-friendliness when compared to TOTP apps. TOTP can be effectively utilized as a secondary 2FA method.
