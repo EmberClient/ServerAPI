@@ -1,6 +1,6 @@
 # Ember Client Server API
 
-Ember Client's Server API allows you to interface with Ember Client from your own server. This allows you to modify some functionality, and use other features that are available in Ember Client.
+Ember Client's Server API allows you to interact with Ember Client from your own server.
 
 ## Installation
 You must first install the Server API plugin. You can do this by downloading the latest version from the [Releases](https://github.com/EmberClient/ServerAPI/releases) page, and placing it in your plugins folder.
