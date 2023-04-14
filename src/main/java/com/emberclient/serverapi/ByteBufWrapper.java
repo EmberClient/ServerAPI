@@ -413,7 +413,7 @@ public final class ByteBufWrapper extends ForwardingByteBuf {
      */
     @NotNull
     public UUID readUuid() {
-        return new UUID(readLong(), readLong());
+        return new UUID(this.readLong(), this.readLong());
     }
 
     /**
@@ -485,7 +485,7 @@ public final class ByteBufWrapper extends ForwardingByteBuf {
 
     @Override
     public ByteBuf delegate() {
-        return delegate;
+        return this.delegate;
     }
 
     @Override
@@ -493,18 +493,18 @@ public final class ByteBufWrapper extends ForwardingByteBuf {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ByteBufWrapper that = (ByteBufWrapper) o;
-        return Objects.equals(delegate, that.delegate);
+        return Objects.equals(this.delegate, that.delegate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(delegate);
+        return Objects.hash(this.delegate);
     }
 
     @Override
     public String toString() {
         return new StringJoiner(", ", ByteBufWrapper.class.getSimpleName() + "[", "]")
-            .add("delegate=" + delegate)
+            .add("delegate=" + this.delegate)
             .toString();
     }
 }
