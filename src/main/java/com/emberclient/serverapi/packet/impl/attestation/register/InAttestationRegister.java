@@ -24,7 +24,7 @@ public class InAttestationRegister extends Packet {
     public void read(ByteBufWrapper buf) {
         this.status = AttestationRegisterResult.fromCode(buf.readVarInt());
 
-        if(this.status.equals(AttestationRegisterResult.SUCCESS)) {
+        if (this.status.equals(AttestationRegisterResult.SUCCESS)) {
             String publicKey = buf.readString();
             this.publicKey = new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey));
         }

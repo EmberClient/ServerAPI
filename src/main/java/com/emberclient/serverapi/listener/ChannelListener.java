@@ -13,7 +13,7 @@ public class ChannelListener implements Listener {
     public void onRegister(PlayerRegisterChannelEvent event) {
         ECServerAPI serverAPI = ECServerAPI.getInstance();
 
-        if(event.getChannel().equals(ECServerAPI.CHANNEL_NAME)) {
+        if (event.getChannel().equals(ECServerAPI.CHANNEL_NAME)) {
             serverAPI.registerPlayer(event.getPlayer().getUniqueId());
             Bukkit.getPluginManager().callEvent(new EmberPlayerJoinEvent(event.getPlayer()));
         }
@@ -23,7 +23,7 @@ public class ChannelListener implements Listener {
     public void onUnregister(PlayerUnregisterChannelEvent event) {
         ECServerAPI serverAPI = ECServerAPI.getInstance();
 
-        if(event.getChannel().equals(ECServerAPI.CHANNEL_NAME)) {
+        if (event.getChannel().equals(ECServerAPI.CHANNEL_NAME)) {
             serverAPI.unregisterPlayer(event.getPlayer().getUniqueId());
         }
     }
