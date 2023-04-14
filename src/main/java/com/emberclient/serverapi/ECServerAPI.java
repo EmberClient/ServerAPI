@@ -43,7 +43,6 @@ public final class ECServerAPI extends JavaPlugin {
 
     public void sendPacket(Player player, Packet packet) {
         if(!isPlayerOnEmber(player.getUniqueId())) {
-            getLogger().warning("Tried to send packet to player " + player.getName() + " who is not on Ember Client!");
             return;
         }
 
