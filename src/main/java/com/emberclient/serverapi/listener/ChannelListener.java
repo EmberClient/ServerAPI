@@ -8,23 +8,28 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRegisterChannelEvent;
 import org.bukkit.event.player.PlayerUnregisterChannelEvent;
 
+import java.util.Set;
+import java.util.UUID;
+
 public class ChannelListener implements Listener {
+    private final Set<UUID> trackedPlayers;
+
+    public ChannelListener(Set<UUID> trackedPlayers) {
+        this.trackedPlayers = trackedPlayers;
+    }
+
     @EventHandler
     public void onRegister(PlayerRegisterChannelEvent event) {
-        ECServerAPI serverAPI = ECServerAPI.getInstance();
-
         if (event.getChannel().equals(ECServerAPI.CHANNEL_NAME)) {
-            serverAPI.registerPlayer(event.getPlayer().getUniqueId());
+            this.trackedPlayers.add(event.getPlayer().getUniqueId());
             Bukkit.getPluginManager().callEvent(new EmberPlayerJoinEvent(event.getPlayer()));
         }
     }
 
     @EventHandler
     public void onUnregister(PlayerUnregisterChannelEvent event) {
-        ECServerAPI serverAPI = ECServerAPI.getInstance();
-
         if (event.getChannel().equals(ECServerAPI.CHANNEL_NAME)) {
-            serverAPI.unregisterPlayer(event.getPlayer().getUniqueId());
+            this.trackedPlayers.remove(event.getPlayer().getUniqueId());
         }
     }
 }

@@ -9,9 +9,7 @@ import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public final class ECServerAPI extends JavaPlugin {
     public static final String CHANNEL_NAME = "ember:data";
@@ -22,7 +20,7 @@ public final class ECServerAPI extends JavaPlugin {
     @Getter
     private final PacketManager packetManager = new PacketManager();
 
-    private final List<UUID> playersOnEmber = new ArrayList<>();
+    private final Set<UUID> playersOnEmber = new HashSet<>();
 
     @Override
     public void onEnable() {
@@ -31,7 +29,7 @@ public final class ECServerAPI extends JavaPlugin {
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, CHANNEL_NAME);
         this.getServer().getMessenger().registerIncomingPluginChannel(this, CHANNEL_NAME, new MessageListener());
 
-        this.getServer().getPluginManager().registerEvents(new ChannelListener(), this);
+        this.getServer().getPluginManager().registerEvents(new ChannelListener(playersOnEmber), this);
     }
 
     @Override
@@ -55,13 +53,5 @@ public final class ECServerAPI extends JavaPlugin {
 
     public boolean isPlayerOnEmber(UUID uuid) {
         return this.playersOnEmber.contains(uuid);
-    }
-
-    public void registerPlayer(UUID uuid) {
-        this.playersOnEmber.add(uuid);
-    }
-
-    public void unregisterPlayer(UUID uuid) {
-        this.playersOnEmber.remove(uuid);
     }
 }
