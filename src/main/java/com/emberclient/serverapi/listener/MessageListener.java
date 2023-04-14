@@ -11,7 +11,7 @@ public final class MessageListener implements PluginMessageListener {
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] message) {
         ECServerAPI serverAPI = ECServerAPI.getInstance();
-        if (!channel.equals(serverAPI.getChannelName())) {
+        if (!channel.equals(ECServerAPI.CHANNEL_NAME)) {
             return;
         }
 
