@@ -5,6 +5,7 @@ import com.emberclient.serverapi.event.EmberPlayerJoinEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRegisterChannelEvent;
 import org.bukkit.event.player.PlayerUnregisterChannelEvent;
 
@@ -31,5 +32,10 @@ public class ChannelListener implements Listener {
         if (event.getChannel().equals(ECServerAPI.CHANNEL_NAME)) {
             this.trackedPlayers.remove(event.getPlayer().getUniqueId());
         }
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        this.trackedPlayers.remove(event.getPlayer().getUniqueId());
     }
 }
