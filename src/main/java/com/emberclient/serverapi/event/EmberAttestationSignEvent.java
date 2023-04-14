@@ -3,10 +3,10 @@ package com.emberclient.serverapi.event;
 import com.emberclient.serverapi.packet.impl.attestation.sign.AttestationSignResult;
 import lombok.Getter;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.player.PlayerEvent;
 
-public class EmberAttestationSignEvent extends Event {
+public class EmberAttestationSignEvent extends PlayerEvent {
     @Getter
     private static HandlerList handlerList = new HandlerList();
 
@@ -25,7 +25,7 @@ public class EmberAttestationSignEvent extends Event {
     private byte[] signedData;
 
     public EmberAttestationSignEvent(Player player, AttestationSignResult status, byte[] signedData) {
-        super(false);
+        super(player);
         this.player = player;
         this.status = status;
         this.signedData = signedData;
