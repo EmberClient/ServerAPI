@@ -42,7 +42,7 @@ public final class ECServerAPI extends JavaPlugin {
     }
 
     public void sendPacket(Player player, Packet packet) {
-        if(!isPlayerOnEmber(player.getUniqueId())) {
+        if (!isPlayerOnEmber(player.getUniqueId())) {
             return;
         }
 
