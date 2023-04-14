@@ -14,15 +14,15 @@ public class PacketManager {
     private final BiMap<Integer, Class<? extends Packet>> packets = HashBiMap.create();
 
     public PacketManager() {
-        packets.put(1, OutAttestationRegister.class);
-        packets.put(1001, InAttestationRegister.class);
+        this.packets.put(1, OutAttestationRegister.class);
+        this.packets.put(1001, InAttestationRegister.class);
 
-        packets.put(2, OutAttestationSign.class);
-        packets.put(1002, InAttestationSign.class);
+        this.packets.put(2, OutAttestationSign.class);
+        this.packets.put(1002, InAttestationSign.class);
     }
 
     private int getPacketId(Packet packet) {
-        return packets.inverse().get(packet.getClass());
+        return this.packets.inverse().get(packet.getClass());
     }
 
     public void handle(Player player, ByteBufWrapper buf) {
@@ -47,7 +47,7 @@ public class PacketManager {
 
     public ByteBufWrapper getData(Packet packet) {
         ByteBufWrapper buf = new ByteBufWrapper(Unpooled.buffer());
-        buf.writeVarInt(getPacketId(packet));
+        buf.writeVarInt(this.getPacketId(packet));
 
         packet.write(buf);
 

@@ -28,20 +28,20 @@ public final class ECServerAPI extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        getServer().getMessenger().registerOutgoingPluginChannel(this, CHANNEL_NAME);
-        getServer().getMessenger().registerIncomingPluginChannel(this, CHANNEL_NAME, new MessageListener());
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, CHANNEL_NAME);
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, CHANNEL_NAME, new MessageListener());
 
-        getServer().getPluginManager().registerEvents(new ChannelListener(), this);
+        this.getServer().getPluginManager().registerEvents(new ChannelListener(), this);
     }
 
     @Override
     public void onDisable() {
-        getServer().getMessenger().unregisterOutgoingPluginChannel(this, CHANNEL_NAME);
-        getServer().getMessenger().unregisterIncomingPluginChannel(this, CHANNEL_NAME);
+        this.getServer().getMessenger().unregisterOutgoingPluginChannel(this, CHANNEL_NAME);
+        this.getServer().getMessenger().unregisterIncomingPluginChannel(this, CHANNEL_NAME);
     }
 
     public void sendPacket(Player player, Packet packet) {
-        if (!isPlayerOnEmber(player.getUniqueId())) {
+        if (!this.isPlayerOnEmber(player.getUniqueId())) {
             return;
         }
 
@@ -49,14 +49,14 @@ public final class ECServerAPI extends JavaPlugin {
     }
 
     public boolean isPlayerOnEmber(UUID uuid) {
-        return playersOnEmber.contains(uuid);
+        return this.playersOnEmber.contains(uuid);
     }
 
     public void registerPlayer(UUID uuid) {
-        playersOnEmber.add(uuid);
+        this.playersOnEmber.add(uuid);
     }
 
     public void unregisterPlayer(UUID uuid) {
-        playersOnEmber.remove(uuid);
+        this.playersOnEmber.remove(uuid);
     }
 }
