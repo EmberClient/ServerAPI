@@ -7,9 +7,11 @@ public abstract class Packet {
     public void write(ByteBufWrapper buf) {
         // empty
     }
+
     public void read(ByteBufWrapper buf) {
         // empty
     }
+
     public void handle(Player player) {
         // empty
     }
