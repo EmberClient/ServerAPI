@@ -36,10 +36,8 @@ public class PacketManager {
         try {
             Packet packet = packetClass.newInstance();
 
-            packet.attach(player);
             packet.read(buf);
-
-            packet.handle();
+            packet.handle(player);
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
@@ -48,9 +46,7 @@ public class PacketManager {
     public ByteBufWrapper getData(Packet packet) {
         ByteBufWrapper buf = new ByteBufWrapper(Unpooled.buffer());
         buf.writeVarInt(this.getPacketId(packet));
-
         packet.write(buf);
-
         return buf;
     }
 }

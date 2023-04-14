@@ -12,13 +12,6 @@ public class InAttestationSign extends Packet {
     private AttestationSignResult status;
     private byte[] signedData;
 
-    private Player player;
-
-    @Override
-    public void write(ByteBufWrapper buf) {
-
-    }
-
     @Override
     public void read(ByteBufWrapper buf) {
         this.status = AttestationSignResult.fromCode(buf.readVarInt());
@@ -31,12 +24,7 @@ public class InAttestationSign extends Packet {
     }
 
     @Override
-    public void handle() {
-        Bukkit.getPluginManager().callEvent(new EmberAttestationSignEvent(this.player, this.status, this.signedData));
-    }
-
-    @Override
-    public void attach(Object object) {
-        this.player = (Player) object;
+    public void handle(Player player) {
+        Bukkit.getPluginManager().callEvent(new EmberAttestationSignEvent(player, this.status, this.signedData));
     }
 }

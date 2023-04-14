@@ -16,19 +16,4 @@ public class OutAttestationSign extends Packet {
     public void write(ByteBufWrapper buf) {
         buf.writeString(Base64.getEncoder().encodeToString(this.verificationBytes));
     }
-
-    @Override
-    public void read(ByteBufWrapper buf) {
-
-    }
-
-    @Override
-    public void handle() {
-
-    }
-
-    @Override
-    public void attach(Object object) {
-
-    }
 }

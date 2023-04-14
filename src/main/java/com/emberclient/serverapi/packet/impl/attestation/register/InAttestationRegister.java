@@ -13,13 +13,6 @@ public class InAttestationRegister extends Packet {
     private AttestationRegisterResult status;
     private X509EncodedKeySpec publicKey;
 
-    private Player player;
-
-    @Override
-    public void write(ByteBufWrapper buf) {
-
-    }
-
     @Override
     public void read(ByteBufWrapper buf) {
         this.status = AttestationRegisterResult.fromCode(buf.readVarInt());
@@ -30,13 +23,7 @@ public class InAttestationRegister extends Packet {
         }
     }
 
-    @Override
-    public void handle() {
-        Bukkit.getPluginManager().callEvent(new EmberAttestationRegisterEvent(this.player, this.status, this.publicKey));
-    }
-
-    @Override
-    public void attach(Object object) {
-        this.player = (Player) object;
+    public void handle(Player player) {
+        Bukkit.getPluginManager().callEvent(new EmberAttestationRegisterEvent(player, this.status, this.publicKey));
     }
 }
