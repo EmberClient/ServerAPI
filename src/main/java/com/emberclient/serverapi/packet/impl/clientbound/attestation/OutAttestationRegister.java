@@ -1,4 +1,4 @@
-package com.emberclient.serverapi.packet.impl.attestation.register;
+package com.emberclient.serverapi.packet.impl.clientbound.attestation;
 
 import com.emberclient.serverapi.packet.impl.ClientboundPacket;
 

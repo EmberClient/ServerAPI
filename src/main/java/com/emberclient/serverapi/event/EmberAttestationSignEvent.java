@@ -1,6 +1,6 @@
 package com.emberclient.serverapi.event;
 
-import com.emberclient.serverapi.packet.impl.attestation.sign.AttestationSignResult;
+import com.emberclient.serverapi.packet.impl.data.AttestationSignResult;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;

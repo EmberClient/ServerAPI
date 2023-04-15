@@ -1,5 +1,6 @@
-package com.emberclient.serverapi.packet.impl.attestation.sign;
+package com.emberclient.serverapi.packet.impl.serverbound.attestation;
 
+import com.emberclient.serverapi.packet.impl.data.AttestationSignResult;
 import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.event.EmberAttestationSignEvent;
 import com.emberclient.serverapi.packet.impl.ServerboundPacket;

@@ -1,4 +1,4 @@
-package com.emberclient.serverapi.packet.impl.attestation.sign;
+package com.emberclient.serverapi.packet.impl.data;
 
 public enum AttestationSignResult {
     SUCCESS,

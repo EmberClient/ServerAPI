@@ -1,4 +1,4 @@
-package com.emberclient.serverapi.packet.impl.attestation.sign;
+package com.emberclient.serverapi.packet.impl.clientbound.attestation;
 
 import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.packet.impl.ClientboundPacket;

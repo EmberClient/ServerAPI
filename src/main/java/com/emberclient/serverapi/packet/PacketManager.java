@@ -2,8 +2,8 @@ package com.emberclient.serverapi.packet;
 
 import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.packet.impl.ServerboundPacket;
-import com.emberclient.serverapi.packet.impl.attestation.register.InAttestationRegister;
-import com.emberclient.serverapi.packet.impl.attestation.sign.InAttestationSign;
+import com.emberclient.serverapi.packet.impl.serverbound.attestation.InAttestationRegister;
+import com.emberclient.serverapi.packet.impl.serverbound.attestation.InAttestationSign;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
