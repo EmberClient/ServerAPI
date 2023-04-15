@@ -2,19 +2,20 @@ package com.emberclient.serverapi.packet.impl.attestation.register;
 
 import com.emberclient.serverapi.ByteBufWrapper;
 import com.emberclient.serverapi.event.EmberAttestationRegisterEvent;
-import com.emberclient.serverapi.packet.Packet;
+import com.emberclient.serverapi.packet.impl.ServerboundPacket;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
-public class InAttestationRegister extends Packet {
+public class InAttestationRegister implements ServerboundPacket {
     private AttestationRegisterResult status;
     private X509EncodedKeySpec publicKey;
 
     @Override
-    public void read(ByteBufWrapper buf) {
+    public void read(@NotNull ByteBufWrapper buf) {
         this.status = buf.readEnum(AttestationRegisterResult.class);
 
         if (this.status.equals(AttestationRegisterResult.SUCCESS)) {
@@ -23,7 +24,13 @@ public class InAttestationRegister extends Packet {
         }
     }
 
-    public void handle(Player player) {
+    @Override
+    public void handle(@NotNull Player player) {
         Bukkit.getPluginManager().callEvent(new EmberAttestationRegisterEvent(player, this.status, this.publicKey));
+    }
+
+    @Override
+    public int packetId() {
+        return 1001;
     }
 }

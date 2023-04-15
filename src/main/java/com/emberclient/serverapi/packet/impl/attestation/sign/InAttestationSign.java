@@ -2,18 +2,19 @@ package com.emberclient.serverapi.packet.impl.attestation.sign;
 
 import com.emberclient.serverapi.ByteBufWrapper;
 import com.emberclient.serverapi.event.EmberAttestationSignEvent;
-import com.emberclient.serverapi.packet.Packet;
+import com.emberclient.serverapi.packet.impl.ServerboundPacket;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Base64;
 
-public class InAttestationSign extends Packet {
+public class InAttestationSign implements ServerboundPacket {
     private AttestationSignResult status;
     private byte[] signedData;
 
     @Override
-    public void read(ByteBufWrapper buf) {
+    public void read(@NotNull ByteBufWrapper buf) {
         this.status = buf.readEnum(AttestationSignResult.class);
 
         if (this.status.equals(AttestationSignResult.SUCCESS)) {
@@ -23,7 +24,12 @@ public class InAttestationSign extends Packet {
     }
 
     @Override
-    public void handle(Player player) {
+    public void handle(@NotNull Player player) {
         Bukkit.getPluginManager().callEvent(new EmberAttestationSignEvent(player, this.status, this.signedData));
+    }
+
+    @Override
+    public int packetId() {
+        return 1002;
     }
 }

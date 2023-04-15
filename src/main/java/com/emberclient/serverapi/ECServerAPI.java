@@ -2,9 +2,9 @@ package com.emberclient.serverapi;
 
 import com.emberclient.serverapi.listener.ChannelListener;
 import com.emberclient.serverapi.listener.MessageListener;
-import com.emberclient.serverapi.packet.Packet;
 import com.emberclient.serverapi.packet.PacketManager;
-import io.netty.buffer.ByteBuf;
+import com.emberclient.serverapi.packet.impl.ClientboundPacket;
+import io.netty.buffer.Unpooled;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,12 +38,15 @@ public final class ECServerAPI extends JavaPlugin {
         this.getServer().getMessenger().unregisterIncomingPluginChannel(this, CHANNEL_NAME);
     }
 
-    public void sendPacket(Player player, Packet packet) {
+    public void sendPacket(Player player, ClientboundPacket packet) {
         if (!this.isPlayerOnEmber(player.getUniqueId())) {
             return;
         }
 
-        ByteBuf buf = this.getPacketManager().getData(packet);
+        ByteBufWrapper buf = new ByteBufWrapper(Unpooled.buffer());
+        buf.writeVarInt(packet.packetId());
+        packet.write(buf);
+
         try {
             player.sendPluginMessage(this, CHANNEL_NAME, buf.array());
         } finally {
