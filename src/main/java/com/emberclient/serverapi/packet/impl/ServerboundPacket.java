@@ -1,6 +1,6 @@
 package com.emberclient.serverapi.packet.impl;
 
-import com.emberclient.serverapi.ByteBufWrapper;
+import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.packet.Packet;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

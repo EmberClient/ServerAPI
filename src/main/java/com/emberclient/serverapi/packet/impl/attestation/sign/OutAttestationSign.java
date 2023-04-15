@@ -1,6 +1,6 @@
 package com.emberclient.serverapi.packet.impl.attestation.sign;
 
-import com.emberclient.serverapi.ByteBufWrapper;
+import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.packet.impl.ClientboundPacket;
 import org.jetbrains.annotations.NotNull;
 

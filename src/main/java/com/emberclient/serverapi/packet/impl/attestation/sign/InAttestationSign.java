@@ -1,6 +1,6 @@
 package com.emberclient.serverapi.packet.impl.attestation.sign;
 
-import com.emberclient.serverapi.ByteBufWrapper;
+import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.event.EmberAttestationSignEvent;
 import com.emberclient.serverapi.packet.impl.ServerboundPacket;
 import org.bukkit.Bukkit;

@@ -1,6 +1,5 @@
-package com.emberclient.serverapi;
+package com.emberclient.serverapi.utils;
 
-import com.emberclient.serverapi.utils.ForwardingByteBuf;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.DecoderException;
 import io.netty.handler.codec.EncoderException;

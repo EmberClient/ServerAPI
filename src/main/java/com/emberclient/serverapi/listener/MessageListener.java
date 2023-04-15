@@ -1,6 +1,6 @@
 package com.emberclient.serverapi.listener;
 
-import com.emberclient.serverapi.ByteBufWrapper;
+import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.ECServerAPI;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

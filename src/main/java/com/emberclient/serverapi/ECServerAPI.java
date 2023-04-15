@@ -4,6 +4,7 @@ import com.emberclient.serverapi.listener.ChannelListener;
 import com.emberclient.serverapi.listener.MessageListener;
 import com.emberclient.serverapi.packet.PacketManager;
 import com.emberclient.serverapi.packet.impl.ClientboundPacket;
+import com.emberclient.serverapi.utils.ByteBufWrapper;
 import io.netty.buffer.Unpooled;
 import lombok.Getter;
 import org.bukkit.entity.Player;
