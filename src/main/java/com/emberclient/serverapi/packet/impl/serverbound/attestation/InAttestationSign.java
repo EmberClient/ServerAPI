@@ -8,8 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Base64;
-
 public class InAttestationSign implements ServerboundPacket {
     private AttestationSignResult status;
     private byte[] signedData;
@@ -19,8 +17,7 @@ public class InAttestationSign implements ServerboundPacket {
         this.status = buf.readEnum(AttestationSignResult.class);
 
         if (this.status.equals(AttestationSignResult.SUCCESS)) {
-            String encodedData = buf.readString();
-            this.signedData = Base64.getDecoder().decode(encodedData);
+            this.signedData = buf.readByteArray();
         }
     }
 

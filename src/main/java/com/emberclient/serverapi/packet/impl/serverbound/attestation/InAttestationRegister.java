@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
 
 public class InAttestationRegister implements ServerboundPacket {
     private AttestationRegisterResult status;
@@ -20,8 +19,7 @@ public class InAttestationRegister implements ServerboundPacket {
         this.status = buf.readEnum(AttestationRegisterResult.class);
 
         if (this.status.equals(AttestationRegisterResult.SUCCESS)) {
-            String publicKey = buf.readString();
-            this.publicKey = new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey));
+            this.publicKey = new X509EncodedKeySpec(buf.readByteArray());
         }
     }
 

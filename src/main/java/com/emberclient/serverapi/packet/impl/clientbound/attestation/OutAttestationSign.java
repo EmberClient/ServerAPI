@@ -4,8 +4,6 @@ import com.emberclient.serverapi.utils.ByteBufWrapper;
 import com.emberclient.serverapi.packet.impl.ClientboundPacket;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Base64;
-
 public class OutAttestationSign implements ClientboundPacket {
     private byte[] verificationBytes;
 
@@ -15,7 +13,7 @@ public class OutAttestationSign implements ClientboundPacket {
 
     @Override
     public void write(@NotNull ByteBufWrapper buf) {
-        buf.writeString(Base64.getEncoder().encodeToString(this.verificationBytes));
+        buf.writeByteArray(this.verificationBytes);
     }
 
     @Override
